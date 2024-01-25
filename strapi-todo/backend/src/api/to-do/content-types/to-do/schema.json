@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "to_dos",
+  "info": {
+    "singularName": "to-do",
+    "pluralName": "to-dos",
+    "displayName": "ToDo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "taskCompleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "todo_author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::todo-author.todo-author",
+      "inversedBy": "to_dos"
+    }
+  }
+}

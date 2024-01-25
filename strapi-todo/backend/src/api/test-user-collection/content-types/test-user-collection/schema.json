@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_user_collections",
+  "info": {
+    "singularName": "test-user-collection",
+    "pluralName": "test-user-collections",
+    "displayName": "TestUserCollection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "password": {
+      "type": "password",
+      "required": true
+    }
+  }
+}
