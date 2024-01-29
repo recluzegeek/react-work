@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -25,10 +25,10 @@
       "type": "boolean",
       "default": false
     },
-    "todo_author": {
+    "author": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::todo-author.todo-author",
+      "target": "plugin::users-permissions.user",
       "inversedBy": "to_dos"
     }
   }

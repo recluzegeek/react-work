@@ -1,0 +1,22 @@
+### fetch todos
+POST http://localhost:1337/api/to-dos
+
+### local login
+
+POST http://localhost:1337/api/auth/local
+Content-Type: application/json
+
+{
+    "identifier": "salman",
+    "password": "salman123"
+}
+
+### fetch authenticated user's posts
+
+GET http://localhost:1337/api/to-dos?populate=author
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTcwNjMzMDE5NiwiZXhwIjoxNzA4OTIyMTk2fQ.AAZUR_9wO6n4dm6JdIJbpAV_lT1hbhRMTgJmSN7s4pU
+
+###
+GET https://times.gift.edu.pk/presentation_layer/ss_popup_sec_change_pl.php?reqid=39627
+Cookie: PHPSESSID=6vhjs9kronbk2tus3jfr624sq6

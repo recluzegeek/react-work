@@ -1,9 +1,10 @@
 import React, { useReducer } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import AuthError from "./AuthError";
 import GoogleSignUpButton from "./GoogleSignUpButton";
 import LoginForm from "./LoginForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialState = {
   email: "",
@@ -30,6 +31,7 @@ const reducer = (state, action) => {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
   const [{ email, password, fetchingErr, success, errors }, dispatch] =
     useReducer(reducer, initialState);
 
@@ -48,7 +50,13 @@ const Login = () => {
       );
       dispatch({ type: "fetchingErr", payload: false });
       dispatch({ type: "success", payload: true });
-      // console.log(response);
+      const token = response.data.jwt;
+      // const user = response.data.user;
+      Cookies.set("jwt_token", token, { expires: 7, secure: true });
+      navigate('/to-dos')
+      // Cookies.set("user_details", user, { expires: 7, secure: true });
+
+      // console.log(response.data.jwt);
     } catch (error) {
       // console.error(
       //   "Error while making POST request (detailed):",

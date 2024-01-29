@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function Success() {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const accessToken = searchParams.get('access_token');
@@ -11,12 +12,15 @@ export default function Success() {
       if (accessToken) {
         try {
           const response = await fetch(
-            `${import.meta.env.REACT_APP_BACKEND}/api/auth/google/callback?access_token=${accessToken}`
+            `${import.meta.env.VITE_REACT_APP_BACKEND}/api/auth/google/callback?access_token=${accessToken}`
           );
+
+          // console.log(response);
 
           if (response.ok) {
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
+            navigate('/to-dos');
           } else {
             console.error('Failed to fetch data from the callback URL');
           }
@@ -29,7 +33,7 @@ export default function Success() {
     };
 
     redirectToCallback();
-  }, [searchParams]);
+  }, [searchParams, navigate]);
 
   return <div>Authentication Successful. Redirecting to Homepage</div>;
 }

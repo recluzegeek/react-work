@@ -49,7 +49,7 @@ const SignUp = () => {
     }
     const data = JSON.stringify({ email, username, password });
     try {
-      console.log('Signup', import.meta.env.VITE_REACT_APP_BACKEND);
+      // console.log('Signup', import.meta.env.VITE_REACT_APP_BACKEND);
       // const backend = import.meta.env.VITE_REACT_APP_BACKEND;
       const response = await axios.post(
         `${import.meta.env.VITE_REACT_APP_BACKEND}/api/auth/local/register`,
